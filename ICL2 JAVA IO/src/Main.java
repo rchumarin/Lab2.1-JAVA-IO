@@ -1,10 +1,9 @@
 import java.io.*;
 
 public class Main {
-
 	public static void main(String[] args) throws IOException{
 		String line, fileNotFound;
-		int num;
+		int num;			 
 /*
 		out.print("Применение фильтров. Укажите путь к файлу: ");
 		BufferedReader reader = new BufferedReader( new InputStreamReader(System.in));
@@ -21,13 +20,11 @@ public class Main {
 		try (BufferedReader filer = new BufferedReader(new FileReader(file))) {
 			do {
 				line = filer.readLine();
-				Factory fact = new Factory();
-				fact = fact.getFilter(num);
-				fact.show(line);
+				Factory factory = new Factory();
+				Filter filter = factory.getFilter(num); 
+				if (filter.accept(line)) System.out.println(line);		
 			}
 			while(line != null);
 		}
-
-
 	}
 }
