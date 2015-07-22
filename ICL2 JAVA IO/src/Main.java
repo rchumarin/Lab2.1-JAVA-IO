@@ -22,7 +22,14 @@ public class Main {
 				line = filer.readLine();
 				Factory factory = new Factory();
 				Filter filter = factory.getFilter(num); 
-				if (filter.accept(line)) System.out.println(line);		
+				try {
+					if (filter.accept(line)) System.out.println(line);
+				}
+				catch(NullPointerException exc) {
+					System.out.println("Не правильно указан номер фильтра");
+					return;
+				}
+				
 			}
 			while(line != null);
 		}
